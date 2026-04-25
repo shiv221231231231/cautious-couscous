@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Only For Manshi ❤️</title>
+<style>
+:root{
+  --bg1:#ff5f7e;
+  --bg2:#ff9eb1;
+  --card:rgba(255,255,255,.14);
+  --card2:rgba(255,255,255,.10);
+  --stroke:rgba(255,255,255,.18);
+  --text:#fff;
+  --accent:#ff4b5c;
+  --accent2:#d81b60;
+  --shadow:0 18px 50px rgba(0,0,0,.18);
+  --shadow2:0 10px 26px rgba(0,0,0,.14);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.14), transparent 18%),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,.10), transparent 20%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,255,.08), transparent 22%),
+    linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  overflow-x:hidden;
+  text-align:center;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.04));
+  pointer-events:none;
+}
+
+.page{
+  position:relative;
+  z-index:2;
+  width:min(1060px,94vw);
+  margin:0 auto;
+  padding:18px 0 72px;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+
+.badge{
+  padding:9px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.14);
+  border:1px solid var(--stroke);
+  backdrop-filter:blur(14px);
+  box-shadow:var(--shadow2);
+  font-size:14px;
+}
+
+h1{
+  font-size:clamp(32px,6vw,58px);
+  margin-top:10px;
+  text-shadow:0 10px 24px rgba(0,0,0,.16);
+  animation:fadeDown .8s ease both;
+}
+
+.sub{
+  max-width:720px;
+  margin:12px auto 0;
+  line-height:1.8;
+  font-size:16px;
+  opacity:.97;
+}
+
+.hero{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:18px;
+  align-items:stretch;
+  margin-top:24px;
+}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr}
+}
+
+.card{
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:28px;
+  backdrop-filter:blur(18px);
+  box-shadow:var(--shadow);
+  padding:22px;
+}
+
+.card h2{
+  font-size:24px;
+  margin-bottom:12px;
+}
+
+.heart-wrap{
+  display:grid;
+  place-items:center;
+  position:relative;
+  min-height:360px;
+  overflow:hidden;
+}
+
+.heart{
+  width:min(210px,54vw);
+  cursor:pointer;
+  animation:beat 2.2s ease-in-out infinite;
+  filter:drop-shadow(0 18px 30px rgba(0,0,0,.16));
+  transition:transform .25s ease, filter .25s ease;
+  will-change:transform;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+.heart:hover{
+  transform:scale(1.05);
+}
+
+.heart:active{
+  transform:scale(.96);
+}
+
+.ring{
+  position:absolute;
+  inset:14%;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);
+  animation:spin 24s linear infinite;
+  opacity:.8;
+}
+
+.ring.r2{
+  inset:2%;
+  opacity:.45;
+  animation-duration:34s;
+}
+
+.stat{
+  position:absolute;
+  padding:10px 14px;
+  border-radius:16px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(10px);
+  font-size:13px;
+}
+
+.s1{top:10%;left:0}
+.s2{right:0;bottom:12%}
+.s3{left:6%;bottom:6%}
+
+#box{
+  min-height:180px;
+  display:none;
+  text-align:left;
+  font-size:18px;
+  line-height:1.85;
+  padding:18px;
+  border-radius:22px;
+  background:var(--card2);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.cursor{
+  display:inline-block;
+  width:8px;
+  margin-left:3px;
+  animation:blink 1s step-end infinite;
+}
+
+.controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin-top:14px;
+}
+
+.btn,.like{
+  border:none;
+  cursor:pointer;
+  border-radius:999px;
+  padding:12px 16px;
+  font-weight:800;
+  min-height:46px;
+  transition:transform .22s ease, background-color .22s ease, color .22s ease, box-shadow .22s ease;
+  box-shadow:0 10px 18px rgba(0,0,0,.12);
+  touch-action:manipulation;
+}
+
+.btn{
+  background:#fff;
+  color:var(--accent2);
+}
+
+.btn:hover,.like:hover{
+  transform:translateY(-2px);
+}
+
+.btn:active,.like:active{
+  transform:translateY(0) scale(.98);
+}
+
+.btn:hover{
+  background:var(--accent2);
+  color:#fff;
+}
+
+.quote{
+  margin-top:14px;
+  padding:14px 16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.12);
+  min-height:68px;
+  line-height:1.7;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:18px;
+}
+
+@media (max-width:900px){
+  .grid{grid-template-columns:1fr}
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+@media (max-width:540px){
+  .gallery{grid-template-columns:1fr 1fr}
+}
+
+.gallery img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:18px;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.16);
+  transition:transform .22s ease, opacity .22s ease;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+.gallery img:hover{
+  transform:scale(1.03);
+}
+
+.like-row{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.like{
+  background:#fff;
+  color:var(--accent2);
+}
+
+.popup,.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.48);
+  z-index:60;
+  padding:18px;
+}
+
+.popup.show,.modal.show{
+  display:flex;
+}
+
+.popup-card,.modal-card{
+  width:min(760px,96vw);
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(18px);
+  border-radius:26px;
+  box-shadow:0 24px 60px rgba(0,0,0,.32);
+  padding:22px;
+  text-align:center;
+  animation:pop .22s ease both;
+}
+
+.popup-card p{
+  line-height:1.8;
+  font-size:17px;
+  margin-top:10px;
+}
+
+.modal-card img{
+  max-width:100%;
+  max-height:72vh;
+  border-radius:18px;
+}
+
+.floating-note{
+  position:fixed;
+  left:50%;
+  bottom:14px;
+  transform:translateX(-50%);
+  z-index:20;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(12px);
+  box-shadow:var(--shadow2);
+  font-size:14px;
+}
+
+.heart-fx{
+  position:fixed;
+  pointer-events:none;
+  color:#fff;
+  text-shadow:0 8px 18px rgba(0,0,0,.2);
+  animation:floatUp 5.5s linear forwards;
+  will-change:transform,opacity;
+}
+
+.music-btn{
+  position:fixed;
+  right:16px;
+  bottom:64px;
+  z-index:100;
+  border:none;
+  border-radius:999px;
+  padding:12px 16px;
+  background:#fff;
+  color:#d81b60;
+  font-weight:800;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+  touch-action:manipulation;
+}
+
+.music-btn:active{
+  transform:scale(.97);
+}
+
+@keyframes beat{
+  0%,100%{transform:scale(1)}
+  40%{transform:scale(1.05)}
+  60%{transform:scale(.99)}
+}
+
+@keyframes spin{
+  from{transform:rotate(0)}
+  to{transform:rotate(360deg)}
+}
+
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes blink{
+  50%{opacity:0}
+}
+
+@keyframes pop{
+  from{opacity:0;transform:scale(.94)}
+  to{opacity:1;transform:scale(1)}
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0) scale(.85);opacity:0}
+  12%{opacity:1}
+  100%{transform:translateY(-110vh) scale(1.12);opacity:0}
+}
+
+@media (max-width:700px){
+  .page{width:min(100vw,96vw); padding:14px 0 84px;}
+  .card{padding:18px; border-radius:22px}
+  .heart-wrap{min-height:300px}
+  #box{font-size:16px; line-height:1.75}
+  .btn,.like{width:100%; justify-content:center}
+  .controls{gap:8px}
+  .like-row{flex-direction:column}
+  .music-btn{bottom:76px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation:none !important;
+    transition:none !important;
+    scroll-behavior:auto !important;
+  }
+}
+.slider{
+  position:relative;
+  width:100%;
+  aspect-ratio: 4 / 5;
+  overflow:hidden;
+  border-radius:22px;
+  background:rgba(255,255,255,.08);
+  box-shadow:0 10px 24px rgba(0,0,0,.14);
+}
+
+.slides{
+  position:relative;
+  width:100%;
+  height:100%;
+}
+
+.slides img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:22px;
+  opacity:0;
+  transform:scale(1.04);
+  animation:slideFade 16s infinite;
+  will-change:opacity,transform;
+}
+
+.slides img:nth-child(1){animation-delay:0s}
+.slides img:nth-child(2){animation-delay:4s}
+.slides img:nth-child(3){animation-delay:8s}
+.slides img:nth-child(4){animation-delay:12s}
+
+@keyframes slideFade{
+  0%{opacity:0; transform:scale(1.04)}
+  8%{opacity:1; transform:scale(1)}
+  25%{opacity:1; transform:scale(1)}
+  33%{opacity:0; transform:scale(1.04)}
+  100%{opacity:0; transform:scale(1.04)}
+}
+
+.slider-dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:10px;
+}
+
+.slider-dots span{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:rgba(255,255,255,.5);
+  animation:dotGlow 16s infinite;
+}
+
+.slider-dots span:nth-child(1){animation-delay:0s}
+.slider-dots span:nth-child(2){animation-delay:4s}
+.slider-dots span:nth-child(3){animation-delay:8s}
+.slider-dots span:nth-child(4){animation-delay:12s}
+
+@keyframes dotGlow{
+  0%,100%{transform:scale(.9); opacity:.45}
+  8%{transform:scale(1.3); opacity:1}
+  25%{transform:scale(1.3); opacity:1}
+  33%{transform:scale(.9); opacity:.45}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <div class="badge">Only For You Deviii ❤️</div>
+    <div class="badge">Pure Love Edition</div>
+  </div>
+
+  <h1>HEY DEAR 💖</h1>
+
+  <div class="hero">
+    <div class="card heart-wrap">
+      <div class="ring"></div>
+      <div class="ring r2"></div>
+      <img src="heart.png" class="heart" onclick="start()" alt="Heart">
+      <div class="stat s1">Tap heart to start</div>
+      <div class="stat s2">Love mode active</div>
+      <div class="stat s3">Made with affection</div>
+    </div>
+
+    <div class="card">
+      <h2>Love Message</h2>
+      <div id="box"></div>
+      <div class="controls">
+        <button class="btn" onclick="next()">Next 💌</button>
+        <button class="btn" onclick="quote()">Quote ✨</button>
+        <button class="btn" onclick="surprise()">Surprise 🎁</button>
+        <button class="btn" onclick="openLetter()">Letter 💖</button>
+      </div>
+      <div class="quote" id="quoteBox">Love quote yahan show hogi.</div>
+      <div class="like-row">
+        <button class="like" onclick="like()">❤️ Like (<span id="count">0</span>)</button>
+        <button class="like" onclick="burst()">💗 Burst</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+<div class="card">
+  <h2>Gallery</h2>
+
+  <div class="slider">
+    <div class="slides">
+      <img src="img1.jpg" alt="img1" onclick="openImg('img1.jpg')" width="100" height="100">
+      <img src="img2.jpg" alt="img2" onclick="openImg('img2.jpg')" width="100" height="100">
+      <img src="img3.jpg" alt="img3" onclick="openImg('img3.jpg')" width="100" height="100">
+      <img src="img4.jpg" alt="img4" onclick="openImg('img4.jpg')" width="100" height="100">
+    </div>
+  </div>
+
+  <div class="slider-dots">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+    <div class="card">
+      <h2>Special Note</h2>
+      <div class="quote" style="min-height:160px;display:flex;align-items:center;">
+        <b>Tum meri life ka sabse beautiful part ho. Tumhari smile meri happiness hai. Main perfect nahi hu, par tumhare liye best banne ki koshish karta hu. Always stay happy ❤️ kitni bhi ladai ho jaye hmare bich me tumhare ek baar bulane me aauga tunhare saath hamesha rhuga apne ap se jasa dyan rakhuga apka or unka bhi jo hone wale hai 😅lekin muje meri betiii chiye phele 😁 tumhare bete ke bare me baad me sochege 😗
+        i love you meriiiiii jaan 💝
+        ab jitna jaldi ho sake mere apss a jao me nhi rhe sakta ab apke bina 🥺
+        tumhe mil kar hug 🫂 krne ka maan hai 
+        tumhe jane nhi dena ab khi tumhari aadat ho gyi hai 👀
+        ye intezar karna itnaa muskil ho chuka hai ki bta nhi Sakta me ab 🥺
+        isliye jaldi se jaldi a jao na meri jaan 🥰🫂
+      </b>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-card">
+    <h2>Dear Manshi ❤️</h2>
+    <p id="letterText"></p>
+    <button class="btn" style="margin-top:16px;" onclick="closeLetter()">Close</button>
+  </div>
+</div>
+
+<div class="modal" id="modal" onclick="closeImg()">
+  <div class="modal-card">
+    <img id="modalImg" alt="Lovely">
+  </div>
+</div>
+
+<div class="floating-note">Made with pure love ❤️</div>
+
+<audio id="bgMusic" loop preload="auto" muted>
+  <source src="music.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()" id="musicBtn">🎵 Music On</button>
+
+<script>
+const messages=[
+  'Tum meri favorite ho ❤️',
+  'Tumhari smile sabse cute hai 😊',
+  'Tum ho to sab perfect lagta hai ✨',
+  'Main hamesha tumhare saath hu 💕'
+];
+
+const quotes=[
+  'You are my happy place.',
+  'I love you endlessly.',
+  'You make my world better.',
+  'You are my forever ❤️'
+];
+
+const sur=[
+  'You are special ❤️',
+  'You are my sweetest feeling 💖',
+  'Every day with you feels better 💕',
+  'You are the reason behind my smile ✨'
+];
+
+let i=0,q=0,l=0,typing=false,musicOn=false;
+
+const bgMusic=document.getElementById('bgMusic');
+const musicBtn=document.getElementById('musicBtn');
+
+function typeText(text){
+  if(typing) return;
+  typing=true;
+  const box=document.getElementById('box');
+  box.innerHTML='';
+  let x=0;
+  const cursor=document.createElement('span');
+  cursor.className='cursor';
+  cursor.innerHTML='|';
+
+  function run(){
+    if(x<text.length){
+      box.innerHTML += text.charAt(x++);
+      setTimeout(run, 28);
+    }else{
+      box.appendChild(cursor);
+      typing=false;
+    }
+  }
+  run();
+}
+
+function start(){
+  document.getElementById('box').style.display='block';
+  typeText(messages[i]);
+  burst();
+}
+
+function next(){
+  i=(i+1)%messages.length;
+  document.getElementById('box').style.display='block';
+  typeText(messages[i]);
+}
+
+function quote(){
+  document.getElementById('quoteBox').innerText='“'+quotes[q]+'”';
+  q=(q+1)%quotes.length;
+}
+
+function surprise(){
+  document.getElementById('quoteBox').innerText=sur[Math.floor(Math.random()*sur.length)];
+  burst();
+}
+
+function openLetter(){
+  document.getElementById('letterText').innerText=
+    'Tum meri life ka sabse beautiful part ho jise me khona nhi chata Tumhari smile meri happiness hai. Main perfect nahi hu, par tumhare liye best banne ki koshish karta hu. Tumhe khush rakhe ke liye me kuch bhi kar sakta hu ❤️ baki sab ki tarah me ye to nhi boluga ki tumhare liye chaand taare thode ke la duga lekin ha me jaru khe sakta hu ki tumhe khush bhaut rakhuga khud se jasa tumhari care kruga tumari ek smile mera din bna deti hai isliye hamesha haaste rhna 😘';
+  document.getElementById('popup').classList.add('show');
+  burst();
+}
+
+function closeLetter(){
+  document.getElementById('popup').classList.remove('show');
+}
+
+function openImg(src){
+  document.getElementById('modal').classList.add('show');
+  document.getElementById('modalImg').src=src;
+}
+
+function closeImg(){
+  document.getElementById('modal').classList.remove('show');
+}
+
+function like(){
+  l++;
+  document.getElementById('count').innerText=l;
+  burst();
+}
+
+function burst(){
+  for(let j=0;j<10;j++){
+    setTimeout(()=>{
+      const h=document.createElement('div');
+      h.className='heart-fx';
+      h.innerHTML=['❤️','💖','💕','💗','💞'][Math.floor(Math.random()*5)];
+      h.style.left=Math.random()*100+'vw';
+      h.style.bottom='-24px';
+      h.style.fontSize=(14+Math.random()*24)+'px';
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),5500);
+    },j*70);
+  }
+}
+
+async function toggleMusic(){
+  try{
+    if(bgMusic.paused){
+      bgMusic.muted=false;
+      await bgMusic.play();
+      musicOn=true;
+      musicBtn.innerText='⏸ Music Off';
+    }else{
+      bgMusic.pause();
+      musicOn=false;
+      musicBtn.innerText='🎵 Music On';
+    }
+  }catch(e){
+    alert('Tap once on the page, then press Music again.');
+  }
+}
+
+document.addEventListener('click', async function firstTap(){
+  if(!musicOn){
+    try{
+      bgMusic.muted=false;
+      await bgMusic.play();
+      musicOn=true;
+      musicBtn.innerText='⏸ Music Off';
+    }catch(e){}
+  }
+}, { once:true });
+
+setInterval(()=>{
+  const h=document.createElement('div');
+  h.className='heart-fx';
+  h.innerHTML=['❤️','💖','💕','💗'][Math.floor(Math.random()*4)];
+  h.style.left=Math.random()*100+'vw';
+  h.style.bottom='-20px';
+  h.style.fontSize=(12+Math.random()*18)+'px';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5500);
+},1400);
+
+setInterval(()=>{
+  document.getElementById('quoteBox').innerText='“'+quotes[q]+'”';
+  q=(q+1)%quotes.length;
+},6000);
+</script>
+</body>
+</html> 
